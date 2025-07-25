@@ -1,0 +1,16 @@
+# Ignorar arquivos compilados do Python
+*.pyc
+__pycache__/
+
+# Ignorar logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+*.old
+
+# Ignorar arquivos locais e sensíveis
+.vscode/
+chave.key
+cache.dat
+
+

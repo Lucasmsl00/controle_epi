@@ -7,7 +7,7 @@ import os
 
 CAMINHO_CACHE = "cache.dat"
 CAMINHO_CHAVE = "chave.key"
-URL_JSON = "http://localhost/licensas.json"  # substitua pelo seu link
+URL_JSON = "http://localhost/licencas.json"  # substitua pelo seu link
 TOLERANCIA_DIAS = 5
 
 def gerar_chave_local():

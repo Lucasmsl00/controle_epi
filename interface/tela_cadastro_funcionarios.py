@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (
 from banco import inserir_funcionario, verificar_cpf
 
 
-class TelaCadastroFuncionario(QWidget):
+class TelaCadastroFuncionarios(QWidget):
    
     def __init__(self):
         super().__init__()

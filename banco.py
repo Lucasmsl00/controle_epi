@@ -58,3 +58,21 @@ def buscar_funcionarios():
     funcionarios = cursor.fetchall() # Pega todos os resultados
     conn.close()
     return funcionarios
+
+def atualizar_funcionario(id_funcionario, novo_nome, novo_cpf, novo_cargo):
+    conn = sqlite3.connect("controle_epi.db")
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""
+            UPDATE funcionarios
+            SET nome = ?, cpf = ?, cargo = ?
+            WHERE id = ?
+        """, (novo_nome, novo_cpf, novo_cargo, id_funcionario))
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError:
+        return False
+    except Exception:
+        return False
+    finally:
+        conn.close()

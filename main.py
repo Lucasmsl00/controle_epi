@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel, QVBoxLayout,
     QMenuBar, QMenu, QAction, QMessageBox
 )
-from interface.tela_cadastro_funcionario import TelaCadastroFuncionario
-from interface.tela_listar_funcionario import TelaListarFuncionario
-from licenca import verificar_licenca
+from interface.tela_cadastro_funcionarios import TelaCadastroFuncionarios
+from interface.tela_listar_funcionarios import TelaListarFuncionarios
 from banco import criar_banco 
+from licenca import verificar_licenca
 
 
 criar_banco()
@@ -15,14 +15,14 @@ class TelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sistema de Controle de EPIs")
-        self.setGeometry(100, 100, 800, 600)
+        self.setMinimumSize(800, 600)
+        self.setGeometry(200, 200, 800, 600)
 
         self.widget_central = QWidget()
         self.setCentralWidget(self.widget_central)
 
         self.layout = QVBoxLayout()
         self.widget_central.setLayout(self.layout)
-
 
         self.criar_menu()
 
@@ -55,20 +55,20 @@ class TelaPrincipal(QMainWindow):
         menu_relatorio.addAction(acao_relatorio)
 
         # Conectando ações do menu às funções
-        acao_cad_func.triggered.connect(self.tela_cadastrar_funcionario)
-        acao_list_func.triggered.connect(self.tela_listar_funcionario)
+        acao_cad_func.triggered.connect(self.tela_cadastrar_funcionarios)
+        acao_list_func.triggered.connect(self.tela_listar_funcionarios)
         acao_cad_epi.triggered.connect(self.tela_cadastrar_epi)
         acao_entregar.triggered.connect(self.tela_registrar_entrega)
         acao_relatorio.triggered.connect(self.tela_relatorio)
 
-    def tela_cadastrar_funcionario(self):
+    def tela_cadastrar_funcionarios(self):
         self.limpar_layout()
-        self.tela_funcionario = TelaCadastroFuncionario()
+        self.tela_funcionario = TelaCadastroFuncionarios()
         self.layout.addWidget(self.tela_funcionario)
 
-    def tela_listar_funcionario(self):
+    def tela_listar_funcionarios(self):
         self.limpar_layout()
-        self.tela_listagem_func = TelaListarFuncionario()
+        self.tela_listagem_func = TelaListarFuncionarios()
         self.layout.addWidget(self.tela_listagem_func)
 
 
